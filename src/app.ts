@@ -2,7 +2,7 @@ import { Criteria } from "./models/criteria";
 import { DecisionSupporter } from "./models/decision-supporter";
 import { DecisionSupport } from "./models/decision-support.interface";
 import { Variant } from "./models/variant";
-import { ConsoleDecisionSupportPrinter } from "./helpers/output/console-printer";
+import { ConsoleAlternativePrinter } from "./helpers/output/console-alternative-printer";
 import { AlternativeGenerator } from "./models/alternative-generator.interface";
 import { CartesianAlternativeGenerator } from "./models/cartesian-alternative-generator";
 
@@ -19,7 +19,7 @@ import { CartesianAlternativeGenerator } from "./models/cartesian-alternative-ge
   const alternatives = alternativeGenerator.generateAlternatives(criterias);
   const decisionSupporter: DecisionSupport = new DecisionSupporter(alternatives);
   
-  const printer = new ConsoleDecisionSupportPrinter();
+  const printer = new ConsoleAlternativePrinter();
 
   printer.print(alternatives);
 })();

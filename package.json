@@ -4,8 +4,5 @@
     "compile": "tsc",
     "node": "node dist/app",
     "start": "npm run clear && npm run compile && npm run node"
-  },
-  "devDependencies": {
-    "tsconfig-paths": "^4.2.0"
   }
 }

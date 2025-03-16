@@ -36,32 +36,14 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const criteria_1 = require("./models/criteria");
 const decision_supporter_1 = require("./models/decision-supporter");
 const variant_1 = require("./models/variant");
-const console_printer_1 = require("./helpers/output/console-printer");
+const console_alternative_printer_1 = require("./helpers/output/console-alternative-printer");
 const cartesian_alternative_generator_1 = require("./models/cartesian-alternative-generator");
 (async () => {
-    // const criterias = [
-    //   new Criteria("K1", [
-    //     new Variant("K11", 3),
-    //     new Variant("K12", 2),
-    //     new Variant("K13", 1),
-    //   ]),
-    //   new Criteria("K2", [
-    //     new Variant("K21", 4),
-    //     new Variant("K22", 3),
-    //     new Variant("K23", 2),
-    //     new Variant("K24", 1),
-    //   ]),
-    //   new Criteria("K3", [
-    //     new Variant("K31", 3),
-    //     new Variant("K32", 2),
-    //     new Variant("K33", 1),
-    //   ]),
-    // ];
     const data = await Promise.resolve().then(() => __importStar(require("./data/criterias.json")));
     const criterias = data.default.map(criteria => new criteria_1.Criteria(criteria.name, criteria.variants.map(variant => new variant_1.Variant(variant.name, variant.weight))));
     const alternativeGenerator = new cartesian_alternative_generator_1.CartesianAlternativeGenerator();
     const alternatives = alternativeGenerator.generateAlternatives(criterias);
     const decisionSupporter = new decision_supporter_1.DecisionSupporter(alternatives);
-    const printer = new console_printer_1.ConsoleDecisionSupportPrinter();
+    const printer = new console_alternative_printer_1.ConsoleAlternativePrinter();
     printer.print(alternatives);
 })();
